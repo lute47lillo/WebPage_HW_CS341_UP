@@ -1,0 +1,90 @@
+<!--
+Lute Lillo Portero
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/public/stylesheets/style.css">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script src="javascripts/stuff.js"> </script>
+        <title>Cheesecake!</title>
+    </head>
+    <body>
+        <div class="header">
+        <img src="/public/images/cheesecake image.jpeg", alt="">
+        <h1>Cheesecake Order Form</h1>
+        </div>
+        
+        <div class="order">
+        <p>Quantity topping</p>
+            <div >
+                <select name="numb_toppings" id="number">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </div>
+        </div> 
+
+        <div class="orderPlaced"></div>
+        <div class="resume">
+            <p id="nTop"></p>
+            <p id="tTop"></p>
+            <p id="iTop"></p>
+        </div>
+
+        <div class="toppings">
+            <div>
+            <input type="radio" id="top" name="topping" value="plain">
+                <label for="Plain">Plain</label><br>
+            <input type="radio" id="top" name="topping" value="cherry">
+                <label for="Cherry">Cherry</label><br>
+             <input type="radio" id="top" name="topping" value="chocolate">
+                <label for="Chocolate">Chocolate</label><br>
+            </div>
+
+        <div class="special">
+            
+        <p><em>Notes:</em></p>
+            <textarea id="myTextarea" placeholder="Enter any special instructions here"></textarea>
+        </div>
+        </div>
+        <div class="last">
+            <h3><em>Total orders for</em></h3>
+
+            <div class="dropdown">
+            <button class="dropbtn" disabled>month</button>
+                <div class="dropdown-content" id="myHover" size="5">
+                  <select size="5">
+                        <option>Jan</option>
+                        <option>Feb</option>
+                        <option>Mar</option>
+                        <option>Apr</option>
+                        <option>May</option>
+                        <option>Jun</option>
+                        <option>Jul</option>
+                        <option>Aug</option>
+                        <option>Sep</option>
+                        <option>Oct</option>
+                        <option>Nov</option>
+                        <option>Dec</option>
+                    </select>
+                
+                </div>
+            </div>
+        
+            <ul>
+                <li>11 cherry</li>
+                <li>17 chocolate</li>
+                <li>31 plain</li>
+              </ul>
+        </div>
+        <div class="orderbtn">
+            <input type="submit" value="Order"><br>
+        </div>
+
+
+    </body>
+</html>
