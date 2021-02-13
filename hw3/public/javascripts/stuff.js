@@ -1,3 +1,6 @@
+//Lute Lillo Portero
+
+//Handles events of the webpage
 eventHandler = function (){
      //Get values of the order
      var number_toppings = $("#number option:selected").attr('value');
