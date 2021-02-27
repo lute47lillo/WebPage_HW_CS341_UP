@@ -7,6 +7,7 @@ Lute Lillo Portero
     <head>
         <link rel="stylesheet" type="text/css" href="/public/stylesheets/style.css">
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+           
             <script src="javascripts/stuff.js"> </script>
         <title>Cheesecake!</title>
     </head>
@@ -55,30 +56,30 @@ Lute Lillo Portero
             <h3><em>Total orders for</em></h3>
 
             <div class="dropdown">
-            <button class="dropbtn" disabled>month</button>
+            <button class="dropbtn">month</button>
                 <div class="dropdown-content" id="myHover" size="5">
-                  <select size="5">
-                        <option>Jan</option>
-                        <option>Feb</option>
-                        <option>Mar</option>
-                        <option>Apr</option>
-                        <option>May</option>
-                        <option>Jun</option>
-                        <option>Jul</option>
-                        <option>Aug</option>
-                        <option>Sep</option>
-                        <option>Oct</option>
-                        <option>Nov</option>
-                        <option>Dec</option>
+                  <select size="5" id="monthSelect">
+                        <option value="January">Jan</option>
+                        <option value="February">Feb</option>
+                        <option value="March">Mar</option>
+                        <option value="April">Apr</option>
+                        <option value="May">May</option>
+                        <option value="June">Jun</option>
+                        <option value="July">Jul</option>
+                        <option value="August">Aug</option>
+                        <option value="September">Sep</option>
+                        <option value="October">Oct</option>
+                        <option value="November">Nov</option>
+                        <option value="December">Dec</option>
                     </select>
                 
                 </div>
             </div>
         
             <ul>
-                <li>11 cherry</li>
-                <li>17 chocolate</li>
-                <li>31 plain</li>
+                <li id="order1">11 cherry</li>
+                <li id="order2">17 chocolate</li>
+                <li id="order3">31 plain</li>
               </ul>
         </div>
         <div class="orderbtn">

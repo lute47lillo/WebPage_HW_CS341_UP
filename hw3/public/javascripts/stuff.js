@@ -1,11 +1,12 @@
 //Lute Lillo Portero
 
+
 //Handles events of the webpage
-eventHandler = function (){
+eventHandler = function (month){
      //Get values of the order
      var number_toppings = $("#number option:selected").attr('value');
      var type_topping = $('input[name="topping"]:checked').val();
-     
+                
      //Check if no type was selected from the radio button group.
      if(type_topping==undefined){
          var type_topping = ("No topping was selected. A Classic cheesecake will be delivered")
@@ -27,6 +28,7 @@ eventHandler = function (){
              });
          }else{
              $("#iTop").text("•Special instructions for the order are: " + special_notes).show();
+             
          }   
      }
      
@@ -54,7 +56,29 @@ eventHandler = function (){
      });
  } 
 
-$(document).ready(function(){             
+$(document).ready(function(month){             
     $(":submit").click(eventHandler); 
+});
+
+
+//Sends a POST request from the client to the server to retrieve data when the month is selected.
+$(document).ready(function () {
+    $("#monthSelect").click(function(){
+        $.post('../orders', { },
+        function(data, status){
+                
+                //retrieves the orders
+                for (var i = 0; i < data.length; i++) {
+                    var top = data[i].topping;
+                    var quant = data[i].quantity;
+                 
+                    var whatOrder = "order"+(i+1);
+            
+                    parseRequest = JSON.parse(JSON.stringify(quant + " " + top));
+                    document.getElementById(whatOrder).innerHTML = parseRequest 
+                }
+ 
+        });
+    });
 });
 
