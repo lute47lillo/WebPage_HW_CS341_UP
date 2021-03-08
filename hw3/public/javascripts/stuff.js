@@ -31,7 +31,10 @@ eventHandler = function (month){
              
          }   
      }
-     
+    
+    /*sending post request*/
+    $.post("/database_orders", {Quantity:number_toppings, Topping:type_topping, Notes:special_notes});
+
      $(".resume").css({
          "color" : "black",
          "font-size" : "25px",
@@ -56,28 +59,47 @@ eventHandler = function (month){
      });
  } 
 
-$(document).ready(function(month){             
+$(document).ready(function(){             
     $(":submit").click(eventHandler); 
-});
 
 
-//Sends a POST request from the client to the server to retrieve data when the month is selected.
-$(document).ready(function () {
-    $("#monthSelect").click(function(){
-        $.post('../orders', { },
-        function(data, status){
-                
-                //retrieves the orders
-                for (var i = 0; i < data.length; i++) {
-                    var top = data[i].topping;
-                    var quant = data[i].quantity;
-                 
-                    var whatOrder = "order"+(i+1);
+    //Change the month and the content depending which one is selected - Added hW5
+    $(document).ready(function () {  
+        $(".dropdown-content option").click(function() {
             
-                    parseRequest = JSON.parse(JSON.stringify(quant + " " + top));
-                    document.getElementById(whatOrder).innerHTML = parseRequest 
+            var token = $(this).text(); 
+            $("#monthSelect").text(token); 
+    
+
+            $.post('../orders', { monthSelect:token },
+            function(data) {
+
+                var chocolate_quantity = 0;
+                var cherry_quantity = 0;
+                var plain_quantity = 0;
+
+                //Retrieve total quantities for each month - New formatting HW5
+                for (var i = 0; i<data.length; i++){
+                    if(data[i].Topping == "chocolate"){
+                        chocolate_quantity += data[i].Quantity;
+                    }
+                    else if(data[i].Topping == "cherry"){
+                        cherry_quantity += data[i].Quantity;
+                    }
+                    else if(data[i].Topping == "plain"){
+                        plain_quantity += data[i].Quantity;
+                    }
                 }
- 
+     
+                //Update the html with the new quantities
+                var li = "<li>" + chocolate_quantity + " Chocolate </li>"
+                + "<li>" + cherry_quantity + " Cherry </li>"
+                + "<li>" + plain_quantity + " Plain </li>";
+     
+                //update html
+                $(list).html(li);
+                    
+            }, "json");
         });
     });
 });

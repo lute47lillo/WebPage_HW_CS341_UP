@@ -8,6 +8,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var ordersRouter = require('./routes/orders');
+var dbRouter = require('./routes/database_orders');
 
 var app = express();
 
@@ -26,12 +27,16 @@ app.use('/public', express.static('public'));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/orders', ordersRouter);
+app.use('/database_orders', dbRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
 });
 
+app.post( '/index' , function(req, res){
+  console.log(req.body) // this outputs: { data: 'hello' }
+} );
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
